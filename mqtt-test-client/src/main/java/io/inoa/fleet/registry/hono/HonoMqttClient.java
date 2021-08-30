@@ -32,6 +32,8 @@ public class HonoMqttClient implements MqttCallback {
 		MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();
 		mqttConnectOptions.setUserName(String.format("%s@%s", deviceId, tenantId));
 		mqttConnectOptions.setPassword(password.toCharArray());
+		mqttConnectOptions.setAutomaticReconnect(true);
+		mqttConnectOptions.setCleanSession(true);
 		client.connect(mqttConnectOptions);
 		client.setCallback(this);
 
